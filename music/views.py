@@ -84,7 +84,7 @@ def delete_album(request,album_id):
 	album=Album.objects.get(pk=album_id)
 	album.delete()
 	albums=Album.objects.filter(user=request.user)
-	return render(request,'music/detail.html',{'albums':albums})
+	return render(request,'music/index.html',{'albums':albums})
 
 def logout_user(request):
     logout(request)
