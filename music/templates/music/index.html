@@ -4,9 +4,11 @@
 {% block body %}
 <div class="albums-container container-fluid">
 
+<!-- Grid System with rows & cols using thumbnail div class -->
+
     <!-- Albums -->
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-12"><!-- first col -->
             <h3>{{ user.username }}'s Albums</h3>
         </div>
         {% if albums %}
@@ -24,13 +26,18 @@
                             <a href="{% url 'music:detail' album.id %}" class="btn btn-primary btn-sm" role="button">View Details</a>
 
                             <!-- Delete Album -->
-                            <form action="{% url 'music:album-delete' album.id %}" method="post" style="display: inline;">
+<!--                             <form action="{% url 'music:album-delete' album.id %}" method="post" style="display: inline;">
                                 {% csrf_token %}
                                 <input type="hidden" name="album_id" value="{{ album.id }}" />
                                 <button type="submit" class="btn btn-default btn-sm">
                                     <span class="glyphicon glyphicon-trash"></span>
                                 </button>
-                            </form>
+                            </form> -->
+
+                            <a href="{% url 'music:album-delete' album.id %}" class="btn btn-default btn-sm" role="button">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </a>
+                            <!-- changed in views -->
 
                             <!-- Favorite Album -->
                             <a href="{% url 'music:favorite_album' album.id %}" class="btn btn-default btn-sm btn-favorite" role="button">
